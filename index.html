@@ -23,6 +23,8 @@ CHECK ME
         await track.applyConstraints({ advanced: [{ torch: true }] });
         setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
         document.getElementById("camera").srcObject = stream;
+        await document.getElementById("camera").play();
+        await track.applyConstraints({ advanced: [{ torch: true }] });
         setTimeout(() => {
             alert("30 SECOND READING COMPLETE");
         }, 30000);
