@@ -21,6 +21,7 @@ CHECK ME
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         const track = stream.getVideoTracks()[0];
         await track.applyConstraints({ advanced: [{ torch: true }] });
+        setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
         document.getElementById("camera").srcObject = stream;
         setTimeout(() => {
             alert("30 SECOND READING COMPLETE");
