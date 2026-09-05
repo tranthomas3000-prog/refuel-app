@@ -6,15 +6,26 @@
 
 <p>At the right time.</p>
 
-<button onclick="alert('PLACE YOUR FINGER ON CAMERA')">
+<button onclick="startCamera()">
 CHECK ME
 </button>
 
 <h2>PLACE YOUR FINGER ON CAMERA</h2>
 
 <p>Hold still for 30 seconds</p>
+<video id="camera" autoplay></video>
 
 <p>Reading your signal...</p>
-
+<script>
+    async function startCamera() {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        document.getElementById("camera").srcObject = stream;
+        setTimeout(() => {
+            alert("30 SECOND READING COMPLETE");
+        }, 30000);
+        console.log("CAMERA STARTED")
+        {} 
+    }
+</script>
 </body>
 </html>
