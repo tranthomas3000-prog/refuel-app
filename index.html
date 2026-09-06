@@ -20,7 +20,7 @@ CHECK ME
     async function startCamera() {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         const track = stream.getVideoTracks()[0];
-        await track.applyConstraints({ advanced: [{ torch: true }] });
+       // await track.applyConstraints({ advanced: [{ torch: true }] });
         setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
         document.getElementById("camera").srcObject = stream;
         await document.getElementById("camera").play();
