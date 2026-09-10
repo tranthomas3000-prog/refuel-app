@@ -17,6 +17,7 @@ CHECK ME
     <p id="camera-status"></p>
 
 <p>Reading your signal...</p>
+    <p id="timer"></p>
 <script>
     async function startCamera() {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
@@ -24,6 +25,14 @@ CHECK ME
        // await track.applyConstraints({ advanced: [{ torch: true }] });
         setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
         document.getElementById("camera").srcObject = stream;
+        let timeLeft=30;
+        document.getElementById("timer").textContent = timeLeft;
+        const countdown = setInterval(() => {
+            timeLeft--;
+            document.getElementById("timer").textContent = timeLeft;
+            if (timeLeft<= 0) {
+              clearInterval(countdown);
+            }, 1000);
         await document.getElementById("camera").play();
         await track.applyConstraints({ advanced: [{ torch: true }] });
         setTimeout(() => {
