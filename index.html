@@ -20,6 +20,7 @@ CHECK ME
     <p id="timer"></p>
 <script>
     async function startCamera() {
+        alert("BUTTON WORKS");
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         const track = stream.getVideoTracks()[0];
        // await track.applyConstraints({ advanced: [{ torch: true }] });
