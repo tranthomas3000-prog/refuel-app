@@ -38,9 +38,26 @@ CHECK ME
         setTimeout(() => {
             alert("30 SECOND READING COMPLETE");
             stream.getTracks().forEach(track => track.stop());
-        }, 30000);
+        }, 31000);
         console.log("CAMERA STARTED")
-        {} 
+        //START RECORDING
+        let recorder;
+        let recordedChunks=[];
+        recorder = new MediaRecorder(stream);
+        recorder.start();
+        recorder.ondataavailable = e => recordedChunks.push(e.data);
+        setTimeout(() => recorder.stop(), 30000);
+        recorder.onstop = ()=>{
+          const blob = new Blob(recordedChunks);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "refuel-reading.webm";
+            a.click();
+        };
+            
+        
+        
     }
 </script>
 </body>
