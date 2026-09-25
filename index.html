@@ -55,7 +55,10 @@ CHECK ME
             a.href = url;
             a.download = "refuel-reading.webm";
             a.click();
+            URL.revokeObjectURL(url);
         };
+    }
+        
             
         
         
