@@ -56,7 +56,9 @@ CHECK ME
             a.download = "refuel-reading.webm";
             a.click();
             URL.revokeObjectURL(url);
+            stream.getTracks().forEach(track => track.stop());
         };
+        
     }
     </script>
     </body>
