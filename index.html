@@ -38,7 +38,7 @@ CHECK ME
         await track.applyConstraints({ advanced: [{ torch: true }] });
         setTimeout(() => {
             alert("30 SECOND READING COMPLETE");
-            stream.getTracks().forEach(track => track.stop());
+            
         }, 31000);
         console.log("CAMERA STARTED")
         //START RECORDING
