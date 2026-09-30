@@ -23,8 +23,8 @@ CHECK ME
         alert("BUTTON WORKS");
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         const track = stream.getVideoTracks()[0];
-        await track.applyConstraints({ advanced: [{ torch: true }] });
-       setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
+        //await track.applyConstraints({ advanced: [{ torch: true }] });
+       //setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
         document.getElementById("camera").srcObject = stream;
         let timeLeft=30;
         document.getElementById("timer").textContent = timeLeft;
@@ -35,7 +35,7 @@ CHECK ME
               clearInterval(countdown);
             } }, 1000);
         await document.getElementById("camera").play();
-        //await track.applyConstraints({ advanced: [{ torch: true }] });
+        await track.applyConstraints({ advanced: [{ torch: true }] });
         setTimeout(() => {
             alert("30 SECOND READING COMPLETE");
             
