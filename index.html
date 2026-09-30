@@ -23,6 +23,10 @@ CHECK ME
         alert("BUTTON WORKS");
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         const track = stream.getVideoTracks()[0];
+        const capabilities = track.getCapabilities();
+        if (capabilities.torch) {
+            await track.applyConstraints({ advanced: [{ torch: true }] });
+        }
         //await track.applyConstraints({ advanced: [{ torch: true }] });
        //setInterval(() => track.applyConstraints({ advanced: [{ torch: true }] }), 1000);
         document.getElementById("camera").srcObject = stream;
